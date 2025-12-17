@@ -1,98 +1,102 @@
-
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { Check, Star } from 'lucide-react';
-import { useState } from 'react';
-import { CustomTitle } from './custom/title';
-import { CustomSubtitle } from './custom/subtitle';
-import { CustomBadge } from './custom/badge';
-import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Check, Star } from "lucide-react";
+import { useState } from "react";
+import { CustomTitle } from "./custom/title";
+import { CustomSubtitle } from "./custom/subtitle";
+import { CustomBadge } from "./custom/badge";
+import { cn } from "@/lib/utils";
 
 const Pricing = () => {
-  const [billingPeriod, setBillingPeriod] = useState('monthly');
-  const isYearly = billingPeriod === 'yearly';
+  const [billingPeriod, setBillingPeriod] = useState("monthly");
+  const isYearly = billingPeriod === "yearly";
 
   const plans = [
     {
-      name: 'Starter',
-      monthlyPrice: '$29',
-      yearlyPrice: '$290',
-      period: isYearly ? '/year' : '/month',
-      description: 'Perfect for small teams getting started',
+      name: "Early Adopters",
+      monthlyPrice: "R$ 0",
+      yearlyPrice: "R$ 0",
+      period: isYearly ? "/ano" : "/mês",
+      description: "Gratuito para os primeiros condomínios — sem pegadinha.",
       features: [
-        'Up to 5 team members',
-        '10GB storage',
-        'Lightning workflows',
-        'Basic analytics',
-        'Email support',
-        'Core integrations'
+        "Grátis de verdade (R$ 0)",
+        "Sem cartão de crédito",
+        "Sem “taxa escondida” / sem surpresa depois",
+        "Acesso antecipado ao Vizyn (beta)",
+        "Onboarding assistido",
+        "Canal direto para sugerir melhorias",
+        "Prioridade em novas funcionalidades",
       ],
-      popular: false
+      popular: true,
     },
     {
-      name: 'Professional',
-      monthlyPrice: '$99',
-      yearlyPrice: '$990',
-      period: isYearly ? '/year' : '/month',
-      description: 'Ideal for growing businesses',
+      name: "Condomínio",
+      monthlyPrice: "R$ 99",
+      yearlyPrice: "R$ 990",
+      period: isYearly ? "/ano" : "/mês",
+      description: "Preço estimado (simulação) para lançamento — pode mudar.",
       features: [
-        'Up to 25 team members',
-        '100GB storage',
-        'Professional workflows',
-        'Advanced analytics',
-        'Priority support',
-        'All integrations',
-        'API access',
-        'Custom workflows'
+        "Comunicação centralizada (avisos e comunicados)",
+        "Gestão de rotinas e tarefas recorrentes",
+        "Perfis e permissões (síndico, conselho, portaria)",
+        "Painel com visão geral da operação",
+        "Suporte por e-mail",
+        "Atualizações contínuas",
       ],
-      popular: true
+      popular: false,
     },
     {
-      name: 'Enterprise',
-      monthlyPrice: '$299',
-      yearlyPrice: '$2990',
-      period: isYearly ? '/year' : '/month',
-      description: 'For large organizations with advanced needs',
+      name: "Administradora",
+      monthlyPrice: "R$ 249",
+      yearlyPrice: "R$ 2490",
+      period: isYearly ? "/ano" : "/mês",
+      description: "Preço estimado (simulação) para lançamento — pode mudar.",
       features: [
-        'Unlimited team members',
-        '1TB storage',
-        'Enterprise workflows',
-        'Enterprise analytics',
-        '24/7 dedicated support',
-        'All integrations',
-        'Full API access',
-        'Custom workflows',
-        'SSO & advanced security',
-        'Custom onboarding'
+        "Tudo do plano Condomínio",
+        "Múltiplos condomínios no mesmo painel",
+        "Relatórios e visão consolidada",
+        "Gestão de usuários por condomínio",
+        "Suporte prioritário",
+        "Onboarding personalizado",
       ],
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-background border-b border-border/50">
+    <section
+      id="pricing"
+      className="py-24 bg-background border-b border-border/50"
+    >
       <div className="container mx-auto px-6">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }} className="flex items-center justify-center flex-col text-center gap-5">
-          <CustomBadge>
-            Pricing
-          </CustomBadge>
+          viewport={{ once: true }}
+          className="flex items-center justify-center flex-col text-center gap-5"
+        >
+          <CustomBadge>Planos</CustomBadge>
 
-          <CustomTitle>
-            Simple & Transparent Pricing
-          </CustomTitle>
-          
+          <CustomTitle>Pré-lançamento do Vizyn</CustomTitle>
+
           <CustomSubtitle className="mb-10">
-            Choose the perfect plan for your business. 
+            O plano <strong>Early Adopters</strong> é{" "}
+            <strong>gratuito para os primeiros</strong> —{" "}
+            <strong>sem pegadinha</strong>.
             <br />
-            All plans include a 14-day free trial.
+            Os demais valores são <strong>simulações</strong> para referência e
+            podem mudar no lançamento.
           </CustomSubtitle>
 
           {/* Pricing Period Toggle */}
@@ -103,20 +107,23 @@ const Pricing = () => {
               onValueChange={(value) => value && setBillingPeriod(value)}
               className="bg-accent rounded-xl gap-1 p-1.5"
             >
-              <ToggleGroupItem 
-                value="monthly" 
+              <ToggleGroupItem
+                value="monthly"
                 className="cursor-pointer flex items-center rounded-lg text-sm font-medium px-6 py-2 data-[state=on]:bg-background data-[state=on]:shadow-sm"
               >
-                Monthly
+                Mensal
               </ToggleGroupItem>
-              <ToggleGroupItem 
-                value="yearly" 
+              <ToggleGroupItem
+                value="yearly"
                 className="cursor-pointer flex items-center rounded-lg text-sm font-medium px-6 py-2 data-[state=on]:bg-background data-[state=on]:shadow-sm flex items-center gap-2"
               >
-                Yearly
-                <Badge variant="outline" className="leading-0 rounded-sm px-1 py-0.5 text-[11px] bg-indigo-100 border-indigo-100 text-indigo-700 dark:text-indigo-200 dark:bg-indigo-950/50 dark:border-indigo-950/50 font-semibold">
+                Anual
+                <Badge
+                  variant="outline"
+                  className="leading-0 rounded-sm px-1 py-0.5 text-[11px] bg-indigo-100 border-indigo-100 text-indigo-700 dark:text-indigo-200 dark:bg-indigo-950/50 dark:border-indigo-950/50 font-semibold"
+                >
                   -20%
-                </Badge>  
+                </Badge>
               </ToggleGroupItem>
             </ToggleGroup>
           </div>
@@ -131,22 +138,27 @@ const Pricing = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className={cn(
-                'h-full relative transition-all duration-300 group', 
-                plan.popular ? 'border-indigo-500 shadow-2xl scale-105' : 'border-border hover:border-indigo-500'
+              <Card
+                className={cn(
+                  "h-full relative transition-all duration-300 group",
+                  plan.popular
+                    ? "border-indigo-500 shadow-2xl scale-105"
+                    : "border-border hover:border-indigo-500"
                 )}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <Badge className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-2.5 py-1">
                       <Star className="h-3 w-3 me-0.5" />
-                      Most Popular
+                      Grátis (sem pegadinha)
                     </Badge>
                   </div>
                 )}
-                
+
                 <CardHeader className="text-center py-6">
-                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                  <CardTitle className="text-2xl font-bold">
+                    {plan.name}
+                  </CardTitle>
                   <CardDescription className="text-muted-foreground mb-5">
                     {plan.description}
                   </CardDescription>
@@ -154,13 +166,13 @@ const Pricing = () => {
                     <div className="relative h-16 flex items-end">
                       <AnimatePresence mode="popLayout">
                         <motion.span
-                          key={isYearly ? 'yearly' : 'monthly'}
+                          key={isYearly ? "yearly" : "monthly"}
                           initial={{ opacity: 0, y: 20, scale: 0.8 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -20, scale: 0.8 }}
-                          transition={{ 
+                          transition={{
                             duration: 0.2,
-                            ease: "easeInOut"
+                            ease: "easeInOut",
                           }}
                           className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent relative"
                         >
@@ -168,7 +180,9 @@ const Pricing = () => {
                         </motion.span>
                       </AnimatePresence>
                     </div>
-                    <span className="text-muted-foreground ms-1 mb-1">{plan.period}</span>
+                    <span className="text-muted-foreground ms-1 mb-1">
+                      {plan.period}
+                    </span>
                   </div>
                 </CardHeader>
 
@@ -181,14 +195,20 @@ const Pricing = () => {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <motion.div
                     whileHover={{ scale: 1.025 }}
                     whileTap={{ scale: 0.98 }}
                     className="pt-6"
                   >
-                    <Button className="w-full cursor-pointer" size="lg" variant={plan.popular ? "default" : "outline"}>
-                      Get Started
+                    <Button
+                      className="w-full cursor-pointer"
+                      size="lg"
+                      variant={plan.popular ? "default" : "outline"}
+                    >
+                      {plan.popular
+                        ? "Quero entrar grátis"
+                        : "Entrar na lista de espera"}
                     </Button>
                   </motion.div>
                 </CardContent>

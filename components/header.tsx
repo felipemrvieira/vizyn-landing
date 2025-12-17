@@ -15,7 +15,7 @@ import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
-  const navItems = ["Início", "Recursos", "Preço", "FAQ", "Contato"];
+  const navItems = ["Home", "Recursos", "Preço", "FAQ", "Contato"];
 
   const { resolvedTheme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -142,7 +142,7 @@ const Header = () => {
               </motion.button>
             ))}
 
-            <Button variant="default">Get Started</Button>
+            <Button variant="default">Agendar demo</Button>
           </nav>
 
           {/* Mobile Navigation */}
@@ -179,7 +179,7 @@ const Header = () => {
                       className="w-full"
                       onClick={() => setIsOpen(false)}
                     >
-                      Get Started
+                      Agendar demo
                     </RainbowButton>
                   </div>
                 </nav>

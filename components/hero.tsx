@@ -1,74 +1,74 @@
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Play, Gift } from 'lucide-react';
-import HeroVideoDialog from '@/components/ui/hero-video-dialog';
-import { WordRotate } from '@/components/magicui/word-rotate';
-import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play, Gift } from "lucide-react";
+import HeroVideoDialog from "@/components/ui/hero-video-dialog";
+import { WordRotate } from "@/components/magicui/word-rotate";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
-import { Star } from '@/components/custom/star';
+import { Star } from "@/components/custom/star";
 
 const Hero = () => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const rotatingWords = ["Web Apps", "Websites",  "Solutions"];
+  const rotatingWords = ["Condomínios", "Comunidade", "Gestão"];
 
   const people = [
     {
       id: 1,
-      name: "John Doe",
-      designation: "Software Engineer",
+      name: "Marina Lima",
+      designation: "Síndica",
       image:
         "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
     },
     {
       id: 2,
-      name: "Robert Johnson",
-      designation: "Product Manager",
+      name: "Bruno Souza",
+      designation: "Administrador",
       image:
         "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
     },
     {
       id: 3,
-      name: "Jane Smith",
-      designation: "Data Scientist",
+      name: "Camila Rocha",
+      designation: "Conselheira",
       image:
         "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
     },
     {
       id: 4,
-      name: "Emily Davis",
-      designation: "UX Designer",
+      name: "Renata Alves",
+      designation: "Porteira",
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
     },
     {
       id: 8,
-      name: "Ana Smith",
-      designation: "Marketing Head",
+      name: "Ana Santos",
+      designation: "Moradora",
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-    },  
+    },
     {
       id: 5,
-      name: "Tyler Durden",
-      designation: "Soap Developer",
+      name: "Lucas Ferreira",
+      designation: "Zelador",
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
     },
     {
       id: 6,
-      name: "Dora",
-      designation: "The Explorer",
+      name: "Dora Martins",
+      designation: "Subsindica",
       image:
         "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
     },
     {
       id: 7,
-      name: "Eric Johnson",
-      designation: "Software Engineer",
+      name: "Rafael Oliveira",
+      designation: "Síndico Profissional",
       image:
         "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
     },
@@ -105,7 +105,7 @@ const Hero = () => {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         {/* Core hotspot for orb 1 */}
@@ -120,7 +120,7 @@ const Hero = () => {
           transition={{
             duration: 7,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         {/* Light Orb 2 */}
@@ -135,7 +135,7 @@ const Hero = () => {
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         {/* Light Orb 3 */}
@@ -150,7 +150,7 @@ const Hero = () => {
           transition={{
             duration: 11,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
         {/* Light Orb 4 */}
@@ -165,10 +165,10 @@ const Hero = () => {
           transition={{
             duration: 13,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 via-indigo-500/10 to-indigo-600/10"
           animate={{
             opacity: [0.3, 0.6, 0.3],
@@ -177,10 +177,10 @@ const Hero = () => {
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
-        />  
-        <motion.div 
+        />
+        <motion.div
           className="absolute inset-0 bg-gradient-to-tl from-indigo-400/10 via-indigo-500/10 to-indigo-600/10"
           animate={{
             opacity: [0.2, 0.5, 0.2],
@@ -190,35 +190,39 @@ const Hero = () => {
           transition={{
             duration: 5,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         />
       </div>
 
       {/* Parallax moving elements on hover */}
-      <motion.div 
+      <motion.div
         className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-indigo-400/20 to-indigo-600/20 dark:bg-gradient-to-br dark:from-indigo-600/20 dark:to-indigo-400/20 rounded-full blur-xl"
         whileHover={{ x: 30, y: -20, scale: 1.2 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       />
-      <motion.div 
+      <motion.div
         className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-indigo-400/20 to-indigo-600/20 dark:bg-gradient-to-br dark:from-indigo-600/20 dark:to-indigo-400/20 rounded-full blur-xl"
         whileHover={{ x: -25, y: 15, scale: 1.1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       />
-      <motion.div 
+      <motion.div
         className="absolute bottom-40 left-20 w-20 h-20 bg-gradient-to-br from-indigo-400/20 to-indigo-600/20 dark:bg-gradient-to-br dark:from-indigo-600/20 dark:to-indigo-400/20 rounded-full blur-xl"
         whileHover={{ x: 20, y: -30, scale: 1.3 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       />
 
-      <div className="absolute inset-0 opacity-40" style={{
-        backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e5e7eb' fill-opacity='0.3'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
-      }}></div>
-      
+      <div
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e5e7eb' fill-opacity='0.3'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+        }}
+      ></div>
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-5xl mx-auto">
-          {/* Main headline */}          
+          {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -226,7 +230,7 @@ const Hero = () => {
             className="font-black flex flex-col md:flex-row items-center gap-0.5 md:gap-1.25 justify-center text-3xl lg:text-7xl font-bold mb-4 lg:mb-8 leading-[1.2]"
           >
             <span className="bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-900 dark:from-gray-50 dark:via-blue-300 dark:to-indigo-900 bg-clip-text text-transparent">
-              Ship Amazing
+              Gestão condominial moderna
             </span>
             <WordRotate
               words={rotatingWords}
@@ -241,8 +245,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-base md:text-xl text-muted-foreground mb-6 md:mb-10 max-w-[600px] mx-auto leading-relaxed"
           >
-            Create amazing apps effortlessly with our powerful platform. 
-            From idea to launch in just minutes.
+            Centralize avisos, comunicados, reservas e demandas do condomínio em
+            um só lugar. Mais transparência, menos ruído e uma comunidade mais
+            conectada.
           </motion.p>
 
           <motion.div
@@ -251,16 +256,24 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-3 mb-10"
           >
-            <Button size="lg" className="cursor-pointer hover:[&_svg]:translate-x-1 w-46">
-              Get started for free
+            <Button
+              size="lg"
+              className="cursor-pointer hover:[&_svg]:translate-x-1 w-46"
+            >
+              Agendar demo
               <ArrowRight className="h-5 w-5 transition-transform" />
             </Button>
 
-            <Button size="lg" variant="outline" className="cursor-pointer hover:[&_svg]:-translate-y-1 w-46" asChild>
-              <Link href="#features"> 
+            <Button
+              size="lg"
+              variant="outline"
+              className="cursor-pointer hover:[&_svg]:-translate-y-1 w-46"
+              asChild
+            >
+              <Link href="#features">
                 <Gift className="h-5 w-5 transition-transform opacity-60" />
-                Explore Metronic
-              </Link>                
+                Ver recursos
+              </Link>
             </Button>
           </motion.div>
 
@@ -274,14 +287,19 @@ const Hero = () => {
             <div className="flex gap-2.5">
               <div className="flex -space-x-2 me-2.5">
                 <AnimatedTooltip items={people} />
-              </div>     
+              </div>
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, idx) => (
-                  <Star key={idx} className="h-5 w-5 transition-transform opacity-60 text-yellow-500" />
+                  <Star
+                    key={idx}
+                    className="h-5 w-5 transition-transform opacity-60 text-yellow-500"
+                  />
                 ))}
               </div>
-            </div>   
-            <div className="text-center text-muted-foreground text-sm font-medium">Trusted by thousands of enterprises</div>
+            </div>
+            <div className="text-center text-muted-foreground text-sm font-medium">
+              Feito para síndicos, moradores e administradoras
+            </div>
           </motion.div>
 
           {/* Hero Video Dialog */}
@@ -302,8 +320,10 @@ const Hero = () => {
                 }
                 animationStyle="from-center"
                 videoSrc="https://www.youtube.com/embed/VIbMn0QHBlw?si=uV9MFOqt6dmBs0vW"
-                thumbnailSrc={resolvedTheme === 'dark' ? '/screens/2.png' : '/screens/5.png'}
-                thumbnailAlt="Product Demo"
+                thumbnailSrc={
+                  resolvedTheme === "dark" ? "/screens/2.png" : "/screens/5.png"
+                }
+                thumbnailAlt="Demonstração do Vizyn"
               />
             )}
           </motion.div>

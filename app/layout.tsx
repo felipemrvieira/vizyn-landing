@@ -14,6 +14,34 @@ export const metadata: Metadata = {
     template: "%s | Vizyn - Gestão condominial",
     default: "Vizyn - Gestão condominial",
   },
+  description:
+    "Vizyn é um app de gestão condominial focado em comunidade: comunicação centralizada, organização da rotina e mais transparência para síndicos, moradores e administradoras.",
+  applicationName: "Vizyn",
+  keywords: [
+    "gestão condominial",
+    "condomínio",
+    "síndico",
+    "administradora",
+    "comunicação condominial",
+    "assembleia",
+    "avisos",
+    "reservas",
+    "ocorrências",
+    "portaria",
+  ],
+  openGraph: {
+    title: "Vizyn - Gestão condominial",
+    description:
+      "Comunicação e gestão do condomínio em um só lugar. Menos ruído, mais transparência e uma comunidade mais conectada.",
+    type: "website",
+    siteName: "Vizyn",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vizyn - Gestão condominial",
+    description:
+      "Gestão condominial focada em comunidade: comunicação centralizada, organização e controle.",
+  },
 };
 
 export default async function RootLayout({

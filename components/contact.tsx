@@ -1,26 +1,32 @@
-
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { toast } from "sonner";
-import { CustomBadge } from '@/components/custom/badge';
-import { CustomSubtitle } from '@/components/custom/subtitle';
-import { CustomTitle } from '@/components/custom/title';
-import Link from 'next/link';
+import { CustomBadge } from "@/components/custom/badge";
+import { CustomSubtitle } from "@/components/custom/subtitle";
+import { CustomTitle } from "@/components/custom/title";
+import Link from "next/link";
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  subject: z.string().min(5, 'Subject must be at least 5 characters'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  subject: z.string().min(5, "Subject must be at least 5 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
 const Contact = () => {
@@ -29,21 +35,23 @@ const Contact = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
     },
   });
 
   const onSubmit = async () => {
     setIsSubmitting(true);
-    
+
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast("Message sent!. Thank you for your message. We'll get back to you soon.");
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    toast(
+      "Mensagem enviada! Obrigado. A equipe do Vizyn vai te responder em breve."
+    );
+
     form.reset();
     setIsSubmitting(false);
   };
@@ -51,41 +59,42 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      content: 'hello@kt.com',
+      title: "Email",
+      content: "contato@vizyn.app",
     },
     {
       icon: Phone,
-      title: 'Phone',
-      content: '+1 (555) 123-4567',
+      title: "WhatsApp",
+      content: "Em breve",
     },
     {
       icon: MapPin,
-      title: 'Address',
-      content: '123 Business St, Suite 100\nSan Francisco, CA 94102',
+      title: "Atendimento",
+      content: "Remoto (Brasil)",
     },
   ];
 
   return (
-    <section id="contact" className="py-24 bg-zinc-50 dark:bg-zinc-950 border-b border-border/50">
+    <section
+      id="contact"
+      className="py-24 bg-zinc-50 dark:bg-zinc-950 border-b border-border/50"
+    >
       <div className="container mx-auto px-6">
-
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }} className="flex items-center justify-center flex-col text-center gap-5 mb-25">
-          <CustomBadge>
-            Get in Touch
-          </CustomBadge>
+          viewport={{ once: true }}
+          className="flex items-center justify-center flex-col text-center gap-5 mb-25"
+        >
+          <CustomBadge>Contato</CustomBadge>
 
-          <CustomTitle>
-            Contact Us
-          </CustomTitle>
-          
+          <CustomTitle>Fale com o Vizyn</CustomTitle>
+
           <CustomSubtitle>
-            Have questions or ready to get started with Metronic ?
-            Send us a message and we&apos;ll respond as soon as possible.
+            Quer entrar grátis como <strong>early adopter</strong> (sem
+            pegadinha), agendar uma demo, ou tirar dúvidas sobre a gestão do seu
+            condomínio? Manda uma mensagem.
           </CustomSubtitle>
         </motion.div>
 
@@ -100,11 +109,14 @@ const Contact = () => {
           >
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
-                Let&apos;s Start a Conversation
+                Vamos começar uma conversa
               </h3>
               <p className="text-muted-foreground mb-8">
-                Whether you&apos;re looking to streamline your workflow, boost productivity, 
-                or transform your business operations, we&apos;re here to help you succeed.
+                O Vizyn nasceu para resolver o básico bem feito: comunicação
+                centralizada, rotinas organizadas e mais transparência — sem
+                virar “grupo infinito” e sem ruído. Conte rapidamente o seu
+                cenário (tipo de condomínio, quantidade de unidades e principal
+                dor) e a gente te guia no próximo passo.
               </p>
             </div>
 
@@ -123,8 +135,11 @@ const Contact = () => {
                     <h4 className="font-semibold text-foreground mb-1">
                       {info.title}
                     </h4>
-                    {info.icon === Mail  ? (
-                      <Link href={`mailto:${info.content}`} className="text-muted-foreground hover:text-purple-500 whitespace-pre-line">
+                    {info.icon === Mail ? (
+                      <Link
+                        href={`mailto:${info.content}`}
+                        className="text-muted-foreground hover:text-purple-500 whitespace-pre-line"
+                      >
                         {info.content}
                       </Link>
                     ) : (
@@ -144,20 +159,23 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-          > 
+          >
             <Card className="border-border/50">
-              <CardContent className="p-8">            
+              <CardContent className="p-8">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
+                  >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Name</FormLabel>
+                            <FormLabel>Nome</FormLabel>
                             <FormControl>
-                              <Input placeholder="Your name" {...field} />
+                              <Input placeholder="Seu nome" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -170,7 +188,11 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                              <Input placeholder="your@email.com" type="email" {...field} />
+                              <Input
+                                placeholder="seu@email.com"
+                                type="email"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -183,9 +205,12 @@ const Contact = () => {
                       name="subject"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Subject</FormLabel>
+                          <FormLabel>Assunto</FormLabel>
                           <FormControl>
-                            <Input placeholder="What's this about?" {...field} />
+                            <Input
+                              placeholder="Ex.: Quero entrar como early adopter"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -197,10 +222,10 @@ const Contact = () => {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Message</FormLabel>
+                          <FormLabel>Mensagem</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Tell us more about your project or question..."
+                            <Textarea
+                              placeholder="Ex.: Condomínio com 80 unidades. Nossa maior dor é comunicação e organização de demandas. Queremos testar o Vizyn."
                               className="min-h-[120px]"
                               {...field}
                             />
@@ -210,13 +235,13 @@ const Contact = () => {
                       )}
                     />
 
-                    <Button  
+                    <Button
                       size="lg"
-                      type="submit" 
-                      className="w-full" 
+                      type="submit"
+                      className="w-full"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {isSubmitting ? "Enviando..." : "Enviar mensagem"}
                     </Button>
                   </form>
                 </Form>

@@ -1,49 +1,49 @@
 /* eslint-disable @next/next/no-img-element */
-import { motion } from 'framer-motion';
-import Marquee from '@/components/ui/marquee';
+import { motion } from "framer-motion";
+import Marquee from "@/components/ui/marquee";
 
 const TrustedBrands = () => {
   const techGiants = [
-    { 
-      name: 'Google', 
-      logo: 'google.svg'
+    {
+      name: "Google",
+      logo: "google.svg",
     },
-    { 
-      name: 'Apple', 
-      logo: 'apple.svg'
+    {
+      name: "Apple",
+      logo: "apple.svg",
     },
-    { 
-      name: 'SpaceX',
-      logo: 'spacex.svg'
+    {
+      name: "SpaceX",
+      logo: "spacex.svg",
     },
-    { 
-      name: 'OpenAI',
-      logo: 'openai.svg'
+    {
+      name: "OpenAI",
+      logo: "openai.svg",
     },
-    { 
-      name: 'Microsoft',
-      logo: 'microsoft.svg'
-    },  
-    { 
-      name: 'Amazon',
-      logo: 'amazon.svg'
+    {
+      name: "Microsoft",
+      logo: "microsoft.svg",
     },
-    { 
-      name: 'Youtube',
-      logo: 'youtube.svg'
+    {
+      name: "Amazon",
+      logo: "amazon.svg",
     },
-    { 
-      name: 'Tesla',
-      logo: 'tesla.svg'
+    {
+      name: "Youtube",
+      logo: "youtube.svg",
     },
-    { 
-      name: 'Spotify',
-      logo: 'spotify.svg'
+    {
+      name: "Tesla",
+      logo: "tesla.svg",
     },
-    { 
-      name: 'Uber',
-      logo: 'uber.svg'
-    }
+    {
+      name: "Spotify",
+      logo: "spotify.svg",
+    },
+    {
+      name: "Uber",
+      logo: "uber.svg",
+    },
   ];
 
   return (
@@ -57,7 +57,7 @@ const TrustedBrands = () => {
           className="text-center mb-12"
         >
           <p className="text-xs font-semibold text-muted-foreground tracking-wider mb-6 uppercase">
-            Trusted by Leading Brands
+            Feito para quem vive e administra condomínios
           </p>
         </motion.div>
 
@@ -65,19 +65,27 @@ const TrustedBrands = () => {
         <div className="relative">
           {/* Left fade shadow */}
           <div className="absolute start-0 top-0 w-20 h-full bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          
+
           {/* Right fade shadow */}
           <div className="absolute end-0 top-0 w-20 h-full bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-          
+
           {/* Marquee */}
-          <Marquee  pauseOnHover>
+          <Marquee pauseOnHover>
             {techGiants.map((company, index) => (
               <div
                 key={`${company.name}-${index}`}
                 className="flex items-center gap-3 mx-8 whitespace-nowrap flex-shrink-0 opacity-50 transition-all duration-300"
               >
-                <img src={`/brands/${company.logo}`} alt={company.name} className="block dark:hidden max-h-10"/>
-                <img src={`/brands/inverse/${company.logo}`} alt={company.name} className="hidden dark:block max-h-10"/>
+                <img
+                  src={`/brands/${company.logo}`}
+                  alt={company.name}
+                  className="block dark:hidden max-h-10"
+                />
+                <img
+                  src={`/brands/inverse/${company.logo}`}
+                  alt={company.name}
+                  className="hidden dark:block max-h-10"
+                />
               </div>
             ))}
           </Marquee>
