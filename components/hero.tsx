@@ -13,7 +13,7 @@ const Hero = () => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const rotatingWords = ["Condomínios", "Comunidade", "Gestão"];
+  const rotatingWords = ["Moderna", "Simplificada", "Conectada"];
 
   const people = [
     {
@@ -227,14 +227,14 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-black flex flex-col md:flex-row items-center gap-0.5 md:gap-1.25 justify-center text-3xl lg:text-7xl font-bold mb-4 lg:mb-8 leading-[1.2]"
+            className="font-black flex flex-col md:flex-col items-center gap-0.5 md:gap-1.25 justify-center text-3xl lg:text-7xl font-bold mb-4 lg:mb-8 leading-[1.2]"
           >
             <span className="bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-900 dark:from-gray-50 dark:via-blue-300 dark:to-indigo-900 bg-clip-text text-transparent">
-              Gestão condominial moderna
+              Gestão condominial
             </span>
             <WordRotate
               words={rotatingWords}
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent w-[365px]"
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent w-[465px]"
             />
           </motion.h1>
 
