@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,51 +29,68 @@ const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   subject: z.string().min(5, "Subject must be at least 5 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
+
+  // honeypot (campo escondido)
+  company: z.string().optional(),
 });
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
       subject: "",
       message: "",
+      company: "", // honeypot
     },
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
+          source: "vizyn-landing",
+          company: values.company, // honeypot
+        }),
+      });
 
-    toast(
-      "Mensagem enviada! Obrigado. A equipe do Vizyn vai te responder em breve."
-    );
+      const json = await res.json().catch(() => null);
 
-    form.reset();
-    setIsSubmitting(false);
+      if (!res.ok) {
+        throw new Error(json?.error ?? "failed");
+      }
+
+      toast(
+        "Mensagem enviada! Obrigado. A equipe do Vizyn vai te responder em breve."
+      );
+      form.reset();
+    } catch (e) {
+      console.error(e);
+      toast(
+        "Não foi possível enviar sua mensagem agora. Tente novamente em instantes."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      content: "contato@vizyn.app",
-    },
-    {
-      icon: Phone,
-      title: "WhatsApp",
-      content: "Em breve",
-    },
-    {
-      icon: MapPin,
-      title: "Atendimento",
-      content: "Remoto (Brasil)",
-    },
+    { icon: Mail, title: "Email", content: "contato@vizyn.app" },
+    { icon: Phone, title: "WhatsApp", content: "Em breve" },
+    { icon: MapPin, title: "Atendimento", content: "Remoto (Brasil)" },
   ];
 
   return (
@@ -88,9 +107,7 @@ const Contact = () => {
           className="flex items-center justify-center flex-col text-center gap-5 mb-25"
         >
           <CustomBadge>Contato</CustomBadge>
-
           <CustomTitle>Fale com o Vizyn</CustomTitle>
-
           <CustomSubtitle>
             Quer entrar grátis como <strong>early adopter</strong> (sem
             pegadinha), agendar uma demo, ou tirar dúvidas sobre a gestão do seu
@@ -167,6 +184,24 @@ const Contact = () => {
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-6"
                   >
+                    {/* Honeypot anti-spam (hidden) */}
+                    <FormField
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem className="hidden">
+                          <FormLabel>Company</FormLabel>
+                          <FormControl>
+                            <Input
+                              autoComplete="off"
+                              tabIndex={-1}
+                              {...field}
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}

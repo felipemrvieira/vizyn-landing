@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
@@ -14,8 +14,27 @@ import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const slugify = (s: string) =>
+  s
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-");
+
 const Header = () => {
   const navItems = ["Home", "Recursos", "Preço", "FAQ", "Contato"];
+
+  const navTargets: Record<string, string[]> = useMemo(
+    () => ({
+      Home: [],
+      Recursos: ["recursos", "features", slugify("Recursos")],
+      Preço: ["preço", "preco", "pricing", slugify("Preço")],
+      FAQ: ["faq", slugify("FAQ")],
+      Contato: ["contato", "contact", slugify("Contato")],
+    }),
+    []
+  );
 
   const { resolvedTheme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,21 +50,25 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Always set 'home' as active when at the very top
       if (window.scrollY < 50) {
         setActiveSection("home");
         return;
       }
 
-      // Track active section based on scroll position
       const sections = [
+        "recursos",
         "features",
-        "how-it-works",
+        "como-funciona",
+        "preço",
+        "preco",
         "pricing",
         "faq",
+        "contato",
         "contact",
       ];
+
       const scrollPosition = window.scrollY + 200;
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -59,42 +82,39 @@ const Header = () => {
           }
         }
       }
-      // Do not update activeSection if not at top and not in any section (last matched section stays active)
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [activeSection]);
 
+  const findFirstExistingTarget = (item: string) => {
+    const candidates = navTargets[item] ?? [slugify(item)];
+    for (const id of candidates) {
+      const el = document.getElementById(id);
+      if (el) return el;
+    }
+    return null;
+  };
+
   const handleNavClick = (item: string) => {
     setIsOpen(false);
+
     if (item === "Home") {
-      // Scroll to top of page for Home link
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    } else {
-      const targetId = item.toLowerCase().replace(" ", "-");
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const element = findFirstExistingTarget(item);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   const isActiveItem = (item: string) => {
-    const sectionMap: { [key: string]: string } = {
-      Home: "home",
-      Features: "features",
-      Pricing: "pricing",
-      FAQ: "faq",
-      Contact: "contact",
-    };
-    return activeSection === sectionMap[item];
+    if (item === "Home") return activeSection === "home";
+    const candidates = navTargets[item] ?? [slugify(item)];
+    return candidates.includes(activeSection);
   };
 
   return (
@@ -116,9 +136,7 @@ const Header = () => {
         <Logo />
 
         <div className="flex items-center gap-2.5">
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {/* Nav items */}
             {navItems.map((item, index) => (
               <motion.button
                 key={item}
@@ -135,17 +153,17 @@ const Header = () => {
               >
                 {item}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all ${
+                  className={cn(
+                    "absolute -bottom-1 left-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all",
                     isActiveItem(item) ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                ></span>
+                  )}
+                />
               </motion.button>
             ))}
 
             <Button variant="default">Agendar demo</Button>
           </nav>
 
-          {/* Mobile Navigation */}
           <div className="md:hidden flex items-center space-x-4">
             <Drawer open={isOpen} onOpenChange={setIsOpen}>
               <DrawerTrigger asChild>
@@ -157,6 +175,7 @@ const Header = () => {
                   <Menu className="size-4" />
                 </Button>
               </DrawerTrigger>
+
               <DrawerContent className="px-6 pb-8">
                 <DrawerTitle></DrawerTitle>
                 <nav className="flex flex-col space-y-4 mt-6">
@@ -187,7 +206,6 @@ const Header = () => {
             </Drawer>
           </div>
 
-          {/* Theme Toggle */}
           {mounted && (
             <Button
               className="cursor-pointer text-muted-foreground hover:bg-transparent hover:text-foreground"
