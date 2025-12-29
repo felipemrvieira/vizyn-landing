@@ -20,13 +20,53 @@ function mustEnv(name: string) {
   return v;
 }
 
+function parseServiceAccountJson(raw: string) {
+  let s = raw.trim();
+
+  // common Vercel mistake: env value saved with wrapping quotes
+  if (
+    (s.startsWith("'") && s.endsWith("'")) ||
+    (s.startsWith('"') && s.endsWith('"'))
+  ) {
+    s = s.slice(1, -1).trim();
+  }
+
+  // optional: support base64-encoded JSON
+  if (!s.startsWith("{")) {
+    try {
+      const decoded = Buffer.from(s, "base64").toString("utf8").trim();
+      if (decoded.startsWith("{")) s = decoded;
+    } catch {
+      // ignore
+    }
+  }
+
+  const credentials = JSON.parse(s);
+
+  // common: private_key stored with escaped newlines
+  if (typeof credentials?.private_key === "string") {
+    credentials.private_key = credentials.private_key.replace(/\\n/g, "\n");
+  }
+
+  return credentials;
+}
+
 export async function POST(req: Request) {
   try {
     const spreadsheetId = mustEnv("GOOGLE_SHEETS_SPREADSHEET_ID");
     const range = process.env.GOOGLE_SHEETS_RANGE ?? "Leads!A:F";
     const serviceAccountJson = mustEnv("GOOGLE_SERVICE_ACCOUNT_JSON");
 
-    const body = (await req.json()) as LeadPayload;
+    let body: LeadPayload;
+    try {
+      body = (await req.json()) as LeadPayload;
+    } catch (e) {
+      console.error("Leads API invalid JSON body:", e);
+      return NextResponse.json(
+        { ok: false, error: "invalid_json" },
+        { status: 400 }
+      );
+    }
 
     // Honeypot: se preenchido, considera bot e retorna ok silencioso
     if (body.company && body.company.trim().length > 0) {
@@ -46,7 +86,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const credentials = JSON.parse(serviceAccountJson);
+    const credentials = parseServiceAccountJson(serviceAccountJson);
 
     const auth = new google.auth.GoogleAuth({
       credentials,
