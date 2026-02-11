@@ -14,7 +14,10 @@ const CallToAction = () => {
   };
 
   return (
-    <section className="h-96 relative w-full overflow-hidden bg-zinc-900 flex flex-col items-center justify-center">
+    <section
+      id="cta"
+      className="h-96 relative w-full overflow-hidden bg-zinc-900 flex flex-col items-center justify-center"
+    >
       <div className="absolute inset-0 w-full h-full bg-zinc-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
       <Boxes />
 
@@ -57,7 +60,7 @@ const CallToAction = () => {
               className="font-semibold"
               onMouseEnter={handleConfetti}
             >
-              <Link href="#pricing">Quero entrar grátis</Link>
+              <Link href="#contact">Quero entrar grátis</Link>
             </Button>
           </motion.div>
         </motion.div>

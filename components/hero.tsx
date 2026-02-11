@@ -13,7 +13,7 @@ const Hero = () => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const rotatingWords = ["Moderna", "Simplificada", "Conectada"];
+  const rotatingWords = ["Integrada", "Financeira", "Transparente"];
 
   const people = [
     {
@@ -245,9 +245,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-base md:text-xl text-muted-foreground mb-6 md:mb-10 max-w-[600px] mx-auto leading-relaxed"
           >
-            Centralize avisos, comunicados, reservas e demandas do condomínio em
-            um só lugar. Mais transparência, menos ruído e uma comunidade mais
-            conectada.
+            Centralize operação e financeiro do condomínio em um só lugar:
+            blocos, andares, unidades, moradores, cobranças e pagamentos.
+            Menos retrabalho para a gestão, mais clareza para moradores e
+            administradora.
           </motion.p>
 
           <motion.div
@@ -259,9 +260,12 @@ const Hero = () => {
             <Button
               size="lg"
               className="cursor-pointer hover:[&_svg]:translate-x-1 w-46"
+              asChild
             >
-              Agendar demo
-              <ArrowRight className="h-5 w-5 transition-transform" />
+              <Link href="#contact">
+                Agendar demo
+                <ArrowRight className="h-5 w-5 transition-transform" />
+              </Link>
             </Button>
 
             <Button

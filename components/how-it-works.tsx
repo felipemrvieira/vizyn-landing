@@ -25,31 +25,31 @@ const HowItWorks = () => {
     },
     {
       id: 2,
-      title: "Organize a comunicação",
+      title: "Organize moradores e comunicação",
       description:
-        "Centralize avisos, comunicados e regras para reduzir ruído e melhorar a transparência.",
+        "Centralize avisos, comunicados e contexto dos moradores para reduzir ruído e melhorar a transparência.",
       image: "/screens/5.png",
       icon: ChartNoAxesCombined,
     },
     {
       id: 4,
-      title: "Configure rotinas e permissões",
+      title: "Configure financeiro e permissões",
       description:
-        "Defina regras, papéis (síndico, conselho, portaria) e fluxos para o dia a dia do condomínio.",
+        "Defina regras, papéis e fluxo de cobrança/pagamento com visibilidade de pendentes, pagos e vencidos.",
       image: "/screens/3.png",
       icon: Cog,
     },
     {
       id: 5,
-      title: "Coloque em uso e acompanhe",
+      title: "Acompanhe indicadores de gestão",
       description:
-        "Ative para moradores e equipe, e acompanhe tudo em um painel simples e prático.",
+        "Ative para moradores e equipe e acompanhe operação e financeiro em dashboards por condomínio e unidade.",
       image: "/screens/4.png",
       icon: CloudUpload,
     },
   ];
 
-  const stepDuration = 5000; // 8 secon
+  const stepDuration = 5000; // 5 seconds
 
   // Auto-advance steps with progress animation
   useEffect(() => {
@@ -85,7 +85,7 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="py-24 border-b border-border/50">
+    <section id="how-it-works" className="py-24 border-b border-border/50">
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div

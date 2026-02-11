@@ -15,6 +15,7 @@ import { CustomTitle } from "./custom/title";
 import { CustomSubtitle } from "./custom/subtitle";
 import { CustomBadge } from "./custom/badge";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const Pricing = () => {
   const [billingPeriod, setBillingPeriod] = useState("monthly");
@@ -33,6 +34,8 @@ const Pricing = () => {
         "Sem “taxa escondida” / sem surpresa depois",
         "Acesso antecipado ao Vizyn (beta)",
         "Onboarding assistido",
+        "Gestão operacional (blocos, andares, unidades e moradores)",
+        "Módulo financeiro para cobrança e acompanhamento",
         "Canal direto para sugerir melhorias",
         "Prioridade em novas funcionalidades",
       ],
@@ -43,12 +46,14 @@ const Pricing = () => {
       monthlyPrice: "R$ 99",
       yearlyPrice: "R$ 990",
       period: isYearly ? "/ano" : "/mês",
-      description: "Preço estimado (simulação) para lançamento — pode mudar.",
+      description: "Simulação de preço para referência no pós-beta.",
       features: [
+        "Tudo do Early Adopters",
         "Comunicação centralizada (avisos e comunicados)",
-        "Gestão de rotinas e tarefas recorrentes",
+        "Gestão de rotinas e tarefas",
         "Perfis e permissões (síndico, conselho, portaria)",
-        "Painel com visão geral da operação",
+        "Painel com visão operacional e financeira",
+        "Gestão de cobranças por unidade",
         "Suporte por e-mail",
         "Atualizações contínuas",
       ],
@@ -59,12 +64,13 @@ const Pricing = () => {
       monthlyPrice: "R$ 249",
       yearlyPrice: "R$ 2490",
       period: isYearly ? "/ano" : "/mês",
-      description: "Preço estimado (simulação) para lançamento — pode mudar.",
+      description: "Simulação de preço para referência no pós-beta.",
       features: [
         "Tudo do plano Condomínio",
         "Múltiplos condomínios no mesmo painel",
-        "Relatórios e visão consolidada",
+        "Relatórios e visão consolidada de cobrança",
         "Gestão de usuários por condomínio",
+        "Configuração de provedor de pagamento por cliente",
         "Suporte prioritário",
         "Onboarding personalizado",
       ],
@@ -88,12 +94,12 @@ const Pricing = () => {
         >
           <CustomBadge>Planos</CustomBadge>
 
-          <CustomTitle>Pré-lançamento do Vizyn</CustomTitle>
+          <CustomTitle>Planos para fase beta e pós-lançamento</CustomTitle>
 
           <CustomSubtitle className="mb-10">
-            O plano <strong>Early Adopters</strong> é{" "}
-            <strong>gratuito para os primeiros</strong> —{" "}
-            <strong>sem pegadinha</strong>.
+            O plano <strong>Early Adopters</strong> está{" "}
+            <strong>gratuito na fase atual</strong> e já inclui operação
+            condominial e financeiro.
             <br />
             Os demais valores são <strong>simulações</strong> para referência e
             podem mudar no lançamento.
@@ -205,10 +211,13 @@ const Pricing = () => {
                       className="w-full cursor-pointer"
                       size="lg"
                       variant={plan.popular ? "default" : "outline"}
+                      asChild
                     >
-                      {plan.popular
-                        ? "Quero entrar grátis"
-                        : "Entrar na lista de espera"}
+                      <Link href="#contact">
+                        {plan.popular
+                          ? "Quero entrar grátis"
+                          : "Entrar na lista de espera"}
+                      </Link>
                     </Button>
                   </motion.div>
                 </CardContent>

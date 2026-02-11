@@ -13,9 +13,9 @@ const Features = () => {
       icon: Zap,
       title: "Rotinas mais rápidas",
       description:
-        "Automatize avisos, comunicados e tarefas recorrentes do condomínio para reduzir retrabalho e liberar tempo da gestão para o que realmente importa.",
-      stats: "12,5h/sem",
-      metric: "Tempo economizado",
+        "Cadastre condomínio, blocos, andares e unidades com fluxo claro para organizar a operação diária e acelerar o onboarding de novos condomínios.",
+      stats: "Estrutura",
+      metric: "Condomínio a unidade",
       colors: {
         bg: "bg-blue-100/40 dark:bg-blue-950/40",
         icon: "text-blue-600",
@@ -30,9 +30,9 @@ const Features = () => {
       icon: Shield,
       title: "Segurança e controle",
       description:
-        "Permissões por perfil, histórico e organização para dar transparência com governança — especialmente quando o condomínio precisa lidar com pressão financeira e cobranças.",
-      stats: "6,8%",
-      metric: "Inadimplência média",
+        "Use papéis e permissões por perfil para síndico, conselho, portaria e morador. Mais governança, histórico e rastreabilidade em decisões sensíveis.",
+      stats: "Governança",
+      metric: "Perfis e rastros",
       colors: {
         bg: "bg-red-100/40 dark:bg-red-950/40",
         icon: "text-red-600",
@@ -47,9 +47,9 @@ const Features = () => {
       icon: Users,
       title: "Comunidade conectada",
       description:
-        "Centralize comunicados, documentos e interações em um canal oficial — com experiência mobile e pronta para o comportamento digital do Brasil.",
-      stats: "86,2%",
-      metric: "Brasil online",
+        "Reúna moradores e equipe em uma comunicação oficial, com menos ruído que grupos dispersos e mais previsibilidade para a rotina condominial.",
+      stats: "Comunicação",
+      metric: "Canal oficial único",
       colors: {
         bg: "bg-emerald-100/40 dark:bg-emerald-950/40",
         icon: "text-emerald-600",
@@ -64,9 +64,9 @@ const Features = () => {
       icon: BarChart3,
       title: "Visão do que está acontecendo",
       description:
-        "Acompanhe pagamentos, pendências e pontos de atenção com um painel simples — e facilite a cobrança com o meio que virou padrão no país.",
-      stats: "50,9%",
-      metric: "Transações via Pix",
+        "Tenha visão financeira com geração de cobranças, acompanhamento de status, baixa manual e integração por provedor de pagamento quando necessário.",
+      stats: "Financeiro",
+      metric: "Cobrança a baixa",
       colors: {
         bg: "bg-amber-100/40 dark:bg-amber-950/20",
         icon: "text-amber-600",
@@ -93,11 +93,11 @@ const Features = () => {
         >
           <CustomBadge>Recursos</CustomBadge>
 
-          <CustomTitle>Tudo o que você precisa para gerir bem</CustomTitle>
+          <CustomTitle>Tudo para operar e cobrar melhor</CustomTitle>
 
           <CustomSubtitle>
-            O Vizyn reúne comunicação, organização e controle em um só lugar
-            para melhorar a rotina do condomínio e fortalecer a comunidade.
+            O Vizyn conecta operação condominial e gestão financeira em um
+            único fluxo, da estrutura física ao ciclo de cobrança.
           </CustomSubtitle>
         </motion.div>
 

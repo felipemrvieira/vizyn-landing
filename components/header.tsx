@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const slugify = (s: string) =>
   s
@@ -23,13 +24,13 @@ const slugify = (s: string) =>
     .replace(/\s+/g, "-");
 
 const Header = () => {
-  const navItems = ["Home", "Recursos", "Preço", "FAQ", "Contato"];
+  const navItems = ["Home", "Recursos", "Planos", "FAQ", "Contato"];
 
   const navTargets: Record<string, string[]> = useMemo(
     () => ({
       Home: [],
       Recursos: ["recursos", "features", slugify("Recursos")],
-      Preço: ["preço", "preco", "pricing", slugify("Preço")],
+      Planos: ["planos", "pricing", slugify("Planos")],
       FAQ: ["faq", slugify("FAQ")],
       Contato: ["contato", "contact", slugify("Contato")],
     }),
@@ -59,6 +60,7 @@ const Header = () => {
         "recursos",
         "features",
         "como-funciona",
+        "planos",
         "preço",
         "preco",
         "pricing",
@@ -161,7 +163,9 @@ const Header = () => {
               </motion.button>
             ))}
 
-            <Button variant="default">Agendar demo</Button>
+            <Button variant="default" asChild>
+              <Link href="#contact">Agendar demo</Link>
+            </Button>
           </nav>
 
           <div className="md:hidden flex items-center space-x-4">
@@ -194,11 +198,10 @@ const Header = () => {
                     </Button>
                   ))}
                   <div className="pt-4">
-                    <RainbowButton
-                      className="w-full"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Agendar demo
+                    <RainbowButton className="w-full" asChild>
+                      <Link href="#contact" onClick={() => setIsOpen(false)}>
+                        Agendar demo
+                      </Link>
                     </RainbowButton>
                   </div>
                 </nav>

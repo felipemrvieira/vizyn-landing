@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "Vizyn",
-  url: "https://metronic-saas.keenthemes.com",
-  ogImage: "https://metronic-saas.keenthemes.com/og.jpg",
+  url: "https://www.vizyn.com.br/",
+  ogImage: "https://www.vizyn.com.br/og.jpg",
   description:
-    "Metronic SaaS - Landing page template built with Next.js and Tailwind CSS",
+    "Vizyn é uma plataforma de gestão condominial com operação, comunicação e financeiro em um só lugar.",
   links: {
-    twitter: "https://x.com/keenthemes",
-    github: "https://github.com/keenthemes",
+    twitter: "https://x.com/vizynapp",
+    github: "https://github.com/vizynapp",
   },
 };
 

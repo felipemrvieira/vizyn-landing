@@ -41,7 +41,17 @@ const FAQ = () => {
     {
       question: "Quais recursos estão incluídos no pré-lançamento?",
       answer:
-        "O foco é no essencial: comunicação centralizada (avisos/comunicados), organização de demandas/rotinas e controle por perfis. Novos módulos serão adicionados gradualmente.",
+        "O foco está no essencial de operação e financeiro: estrutura do condomínio (blocos, andares e unidades), gestão de moradores, comunicação centralizada, cobranças e acompanhamento de pagamentos.",
+    },
+    {
+      question: "Já é possível usar o financeiro no dia a dia?",
+      answer:
+        "Sim. O Vizyn já permite criar e acompanhar cobranças por unidade, visualizar status (pendente, pago, vencido) e operar rotinas financeiras básicas da gestão.",
+    },
+    {
+      question: "Dá para integrar provedor de pagamento?",
+      answer:
+        "Sim. A arquitetura já foi preparada para plugar provedores como Asaas, preservando a camada de cobrança do produto para evitar dependência direta de um único PSP.",
     },
     {
       question: "Como funciona privacidade e acesso às informações?",

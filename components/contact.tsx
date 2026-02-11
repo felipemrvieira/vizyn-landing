@@ -111,7 +111,7 @@ const Contact = () => {
           <CustomSubtitle>
             Quer entrar grátis como <strong>early adopter</strong> (sem
             pegadinha), agendar uma demo, ou tirar dúvidas sobre a gestão do seu
-            condomínio? Manda uma mensagem.
+            condomínio e do financeiro? Manda uma mensagem.
           </CustomSubtitle>
         </motion.div>
 
@@ -130,10 +130,10 @@ const Contact = () => {
               </h3>
               <p className="text-muted-foreground mb-8">
                 O Vizyn nasceu para resolver o básico bem feito: comunicação
-                centralizada, rotinas organizadas e mais transparência — sem
-                virar “grupo infinito” e sem ruído. Conte rapidamente o seu
-                cenário (tipo de condomínio, quantidade de unidades e principal
-                dor) e a gente te guia no próximo passo.
+                centralizada, rotinas organizadas e cobrança com visibilidade
+                para a gestão. Conte rapidamente o seu cenário (tipo de
+                condomínio, quantidade de unidades, principal dor operacional e
+                financeira) e a gente te guia no próximo passo.
               </p>
             </div>
 
@@ -243,7 +243,7 @@ const Contact = () => {
                           <FormLabel>Assunto</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Ex.: Quero entrar como early adopter"
+                              placeholder="Ex.: Quero organizar cobrança e comunicação do condomínio"
                               {...field}
                             />
                           </FormControl>
@@ -260,7 +260,7 @@ const Contact = () => {
                           <FormLabel>Mensagem</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Ex.: Condomínio com 80 unidades. Nossa maior dor é comunicação e organização de demandas. Queremos testar o Vizyn."
+                              placeholder="Ex.: Condomínio com 80 unidades. Nossa maior dor é inadimplência e retrabalho na comunicação. Queremos testar o Vizyn."
                               className="min-h-[120px]"
                               {...field}
                             />
