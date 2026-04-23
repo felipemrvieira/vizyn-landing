@@ -41,12 +41,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -209,22 +203,20 @@ const Header = () => {
             </Drawer>
           </div>
 
-          {mounted && (
-            <Button
-              className="cursor-pointer text-muted-foreground hover:bg-transparent hover:text-foreground"
-              variant="ghost"
-              size="icon"
-              onClick={() =>
-                setTheme(resolvedTheme === "dark" ? "light" : "dark")
-              }
-            >
-              {resolvedTheme === "dark" ? (
-                <Sun className="size-4" />
-              ) : (
-                <Moon className="size-4" />
-              )}
-            </Button>
-          )}
+          <Button
+            className="cursor-pointer text-muted-foreground hover:bg-transparent hover:text-foreground"
+            variant="ghost"
+            size="icon"
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="size-4" />
+            ) : (
+              <Moon className="size-4" />
+            )}
+          </Button>
         </div>
       </div>
     </motion.header>

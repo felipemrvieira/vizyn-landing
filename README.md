@@ -54,7 +54,19 @@ Variáveis necessárias:
 
 - `GOOGLE_SHEETS_SPREADSHEET_ID`
 - `GOOGLE_SERVICE_ACCOUNT_JSON`
-- `GOOGLE_SHEETS_RANGE` (opcional, default `Leads!A:F`)
+- `GOOGLE_SHEETS_RANGE` (opcional, default `Leads!A:J`)
+
+Campos atualmente enviados pela landing:
+
+- `name`
+- `email`
+- `role`
+- `unitsBand`
+- `hasPortaria`
+- `primaryPain`
+- `subject`
+- `message`
+- `source`
 
 ## Governança
 

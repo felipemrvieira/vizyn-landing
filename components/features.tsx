@@ -3,19 +3,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CustomBadge } from "@/components/custom/badge";
 import { CustomTitle } from "@/components/custom/title";
 import { CustomSubtitle } from "@/components/custom/subtitle";
-import { Zap, Shield, BarChart3, Users } from "lucide-react";
+import { Bell, ClipboardList, KeyRound, PackageCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Features = () => {
   const features = [
     {
       id: "task-automation",
-      icon: Zap,
-      title: "Rotinas mais rápidas",
+      icon: Bell,
+      title: "Canal oficial de comunicados",
       description:
-        "Cadastre condomínio, blocos, andares e unidades com fluxo claro para organizar a operação diária e acelerar o onboarding de novos condomínios.",
-      stats: "Estrutura",
-      metric: "Condomínio a unidade",
+        "Publique avisos e comunicados em um espaço oficial, com mais clareza para moradores e menos dependência de grupos dispersos.",
+      stats: "Comunicação",
+      metric: "Menos ruído no dia a dia",
       colors: {
         bg: "bg-blue-100/40 dark:bg-blue-950/40",
         icon: "text-blue-600",
@@ -27,12 +27,12 @@ const Features = () => {
     },
     {
       id: "workflow-optimization",
-      icon: Shield,
-      title: "Segurança e controle",
+      icon: ClipboardList,
+      title: "Ocorrências com rastreabilidade",
       description:
-        "Use papéis e permissões por perfil para síndico, conselho, portaria e morador. Mais governança, histórico e rastreabilidade em decisões sensíveis.",
-      stats: "Governança",
-      metric: "Perfis e rastros",
+        "Formalize chamados e acompanhe resposta, histórico e status sem depender de conversas soltas ou memória operacional.",
+      stats: "Atendimento",
+      metric: "Registro até resposta",
       colors: {
         bg: "bg-red-100/40 dark:bg-red-950/40",
         icon: "text-red-600",
@@ -44,12 +44,12 @@ const Features = () => {
     },
     {
       id: "intelligent-scheduling",
-      icon: Users,
-      title: "Comunidade conectada",
+      icon: KeyRound,
+      title: "Portaria e acesso organizados",
       description:
-        "Reúna moradores e equipe em uma comunicação oficial, com menos ruído que grupos dispersos e mais previsibilidade para a rotina condominial.",
-      stats: "Comunicação",
-      metric: "Canal oficial único",
+        "Gerencie visitantes com mais previsibilidade para a portaria e mais segurança para o condomínio, sem improviso na entrada.",
+      stats: "Acesso",
+      metric: "Convite até entrada",
       colors: {
         bg: "bg-emerald-100/40 dark:bg-emerald-950/40",
         icon: "text-emerald-600",
@@ -61,12 +61,12 @@ const Features = () => {
     },
     {
       id: "ai-analytics",
-      icon: BarChart3,
-      title: "Visão do que está acontecendo",
+      icon: PackageCheck,
+      title: "Rotinas recorrentes centralizadas",
       description:
-        "Tenha visão financeira com geração de cobranças, acompanhamento de status, baixa manual e integração por provedor de pagamento quando necessário.",
-      stats: "Financeiro",
-      metric: "Cobrança a baixa",
+        "Entregas e reservas ficam em um só fluxo, com menos dúvida sobre responsabilidade, status e histórico operacional.",
+      stats: "Operação",
+      metric: "Reserva e entrega controladas",
       colors: {
         bg: "bg-amber-100/40 dark:bg-amber-950/20",
         icon: "text-amber-600",
@@ -93,11 +93,11 @@ const Features = () => {
         >
           <CustomBadge>Recursos</CustomBadge>
 
-          <CustomTitle>Tudo para operar e cobrar melhor</CustomTitle>
+          <CustomTitle>O essencial para operar melhor o condomínio</CustomTitle>
 
           <CustomSubtitle>
-            O Vizyn conecta operação condominial e gestão financeira em um
-            único fluxo, da estrutura física ao ciclo de cobrança.
+            O Vizyn concentra os fluxos que mais pesam no cotidiano da gestão:
+            comunicação, ocorrências, acesso, entregas e reservas.
           </CustomSubtitle>
         </motion.div>
 

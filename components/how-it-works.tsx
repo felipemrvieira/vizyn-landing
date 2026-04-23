@@ -17,33 +17,33 @@ const HowItWorks = () => {
   const steps = [
     {
       id: 1,
-      title: "Cadastre o condomínio",
+      title: "Organize a base do condomínio",
       description:
-        "Crie a estrutura básica: blocos, unidades e perfis de acesso em poucos cliques.",
+        "Configure unidades, perfis e responsáveis para começar com uma operação clara desde o primeiro dia.",
       image: "/screens/4.png",
       icon: Cable,
     },
     {
       id: 2,
-      title: "Organize moradores e comunicação",
+      title: "Ative o canal oficial",
       description:
-        "Centralize avisos, comunicados e contexto dos moradores para reduzir ruído e melhorar a transparência.",
+        "Publique comunicados e pare de depender de canais dispersos para avisos importantes e alinhamento do dia a dia.",
       image: "/screens/5.png",
       icon: ChartNoAxesCombined,
     },
     {
       id: 4,
-      title: "Configure financeiro e permissões",
+      title: "Formalize as rotinas críticas",
       description:
-        "Defina regras, papéis e fluxo de cobrança/pagamento com visibilidade de pendentes, pagos e vencidos.",
+        "Passe a operar ocorrências, visitantes, entregas e reservas com histórico, status e menos improviso.",
       image: "/screens/3.png",
       icon: Cog,
     },
     {
       id: 5,
-      title: "Acompanhe indicadores de gestão",
+      title: "Ganhe previsibilidade operacional",
       description:
-        "Ative para moradores e equipe e acompanhe operação e financeiro em dashboards por condomínio e unidade.",
+        "Acompanhe o que foi comunicado, respondido, agendado e entregue para reduzir ruído e acelerar resposta da gestão.",
       image: "/screens/4.png",
       icon: CloudUpload,
     },
@@ -54,8 +54,6 @@ const HowItWorks = () => {
   // Auto-advance steps with progress animation
   useEffect(() => {
     if (isPaused) return;
-
-    setProgress(0);
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -79,6 +77,8 @@ const HowItWorks = () => {
   }, [activeStep, isPaused, steps.length]);
 
   const handleStepClick = (index: number) => {
+    setProgress(0);
+    setIsPaused(true);
     setActiveStep(index);
     manuallyTriggered.current = true; // Flag as manual
     setTimeout(() => setIsPaused(false), 4000); // Resume auto
@@ -101,7 +101,7 @@ const HowItWorks = () => {
 
           <CustomSubtitle>
             Um fluxo simples para colocar o Vizyn no ar e melhorar a rotina do
-            condomínio desde o primeiro dia.
+            condomínio com valor percebido logo no começo da operação.
           </CustomSubtitle>
         </motion.div>
 
@@ -184,7 +184,8 @@ const HowItWorks = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">
-            Pronto para começar? Em menos de 5 minutos você já vê valor.
+            Pronto para começar? A primeira conversa já mostra onde o Vizyn
+            reduz ruído operacional no seu condomínio.
           </p>
           <Button size="lg" asChild>
             <Link href="#cta">Agendar demo</Link>

@@ -35,7 +35,7 @@ const CallToAction = () => {
             viewport={{ once: true }}
             className="text-white/80 font-semibold text-sm uppercase tracking-wide mb-6"
           >
-            Vizyn em pré-lançamento
+            Vizyn para operação condominial
           </motion.p>
 
           <motion.h2
@@ -45,7 +45,7 @@ const CallToAction = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-white mb-10"
           >
-            Entre grátis como early adopter — sem pegadinha.
+            Valide o Vizyn no seu condomínio com onboarding assistido.
           </motion.h2>
 
           <motion.div
@@ -60,7 +60,7 @@ const CallToAction = () => {
               className="font-semibold"
               onMouseEnter={handleConfetti}
             >
-              <Link href="#contact">Quero entrar grátis</Link>
+              <Link href="#contact">Quero validar no piloto</Link>
             </Button>
           </motion.div>
         </motion.div>

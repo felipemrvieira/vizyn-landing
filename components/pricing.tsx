@@ -23,21 +23,18 @@ const Pricing = () => {
 
   const plans = [
     {
-      name: "Early Adopters",
+      name: "Piloto Assistido",
       monthlyPrice: "R$ 0",
       yearlyPrice: "R$ 0",
       period: isYearly ? "/ano" : "/mês",
-      description: "Gratuito para os primeiros condomínios — sem pegadinha.",
+      description: "Validação acompanhada para os primeiros condomínios.",
       features: [
-        "Grátis de verdade (R$ 0)",
+        "Entrada gratuita para pilotos selecionados",
         "Sem cartão de crédito",
-        "Sem “taxa escondida” / sem surpresa depois",
-        "Acesso antecipado ao Vizyn (beta)",
         "Onboarding assistido",
-        "Gestão operacional (blocos, andares, unidades e moradores)",
-        "Módulo financeiro para cobrança e acompanhamento",
-        "Canal direto para sugerir melhorias",
-        "Prioridade em novas funcionalidades",
+        "Comunicados, ocorrências, visitantes, entregas e reservas",
+        "Canal direto para feedback operacional",
+        "Prioridade nas evoluções do core",
       ],
       popular: true,
     },
@@ -46,16 +43,16 @@ const Pricing = () => {
       monthlyPrice: "R$ 99",
       yearlyPrice: "R$ 990",
       period: isYearly ? "/ano" : "/mês",
-      description: "Simulação de preço para referência no pós-beta.",
+      description: "Faixa inicial para operação condominial recorrente.",
       features: [
-        "Tudo do Early Adopters",
-        "Comunicação centralizada (avisos e comunicados)",
-        "Gestão de rotinas e tarefas",
-        "Perfis e permissões (síndico, conselho, portaria)",
-        "Painel com visão operacional e financeira",
-        "Gestão de cobranças por unidade",
+        "Tudo do Piloto Assistido",
+        "Comunicação oficial para o condomínio",
+        "Rastreamento de ocorrências e respostas",
+        "Fluxo de visitantes para portaria",
+        "Controle de entregas e reservas",
+        "Perfis e permissões por função",
         "Suporte por e-mail",
-        "Atualizações contínuas",
+        "Atualizações contínuas do core operacional",
       ],
       popular: false,
     },
@@ -64,13 +61,13 @@ const Pricing = () => {
       monthlyPrice: "R$ 249",
       yearlyPrice: "R$ 2490",
       period: isYearly ? "/ano" : "/mês",
-      description: "Simulação de preço para referência no pós-beta.",
+      description: "Faixa inicial para operação padronizada em múltiplos clientes.",
       features: [
         "Tudo do plano Condomínio",
         "Múltiplos condomínios no mesmo painel",
-        "Relatórios e visão consolidada de cobrança",
-        "Gestão de usuários por condomínio",
-        "Configuração de provedor de pagamento por cliente",
+        "Padronização operacional por condomínio",
+        "Visão consolidada de operação",
+        "Gestão de usuários e perfis por cliente",
         "Suporte prioritário",
         "Onboarding personalizado",
       ],
@@ -94,15 +91,14 @@ const Pricing = () => {
         >
           <CustomBadge>Planos</CustomBadge>
 
-          <CustomTitle>Planos para fase beta e pós-lançamento</CustomTitle>
+          <CustomTitle>Planos para piloto e operação recorrente</CustomTitle>
 
           <CustomSubtitle className="mb-10">
-            O plano <strong>Early Adopters</strong> está{" "}
-            <strong>gratuito na fase atual</strong> e já inclui operação
-            condominial e financeiro.
+            O Vizyn entra primeiro pelo <strong>core operacional</strong>:
+            comunicação, ocorrências, visitantes, entregas e reservas.
             <br />
-            Os demais valores são <strong>simulações</strong> para referência e
-            podem mudar no lançamento.
+            O plano de piloto é gratuito para validação assistida, e os demais
+            valores servem como referência comercial inicial.
           </CustomSubtitle>
 
           {/* Pricing Period Toggle */}
@@ -156,7 +152,7 @@ const Pricing = () => {
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <Badge className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-2.5 py-1">
                       <Star className="h-3 w-3 me-0.5" />
-                      Grátis (sem pegadinha)
+                      Piloto com onboarding
                     </Badge>
                   </div>
                 )}
@@ -215,8 +211,8 @@ const Pricing = () => {
                     >
                       <Link href="#contact">
                         {plan.popular
-                          ? "Quero entrar grátis"
-                          : "Entrar na lista de espera"}
+                          ? "Quero validar no piloto"
+                          : "Quero falar com a equipe"}
                       </Link>
                     </Button>
                   </motion.div>

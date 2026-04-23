@@ -33,9 +33,9 @@ const Footer = () => {
                 <Logo />
               </div>
               <p className="text-muted-foreground mb-6 max-w-sm">
-                Vizyn é um app de gestão condominial focado em comunidade:
-                comunicação centralizada, rotinas organizadas e mais
-                transparência no dia a dia, com apoio à operação financeira.
+                Vizyn organiza a operação diária do condomínio com comunicação
+                oficial, ocorrências rastreáveis, acesso mais previsível e
+                rotinas centralizadas para gestão, portaria e moradores.
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (

@@ -14,9 +14,9 @@ import Link from "next/link";
 const FAQ = () => {
   const faqs = [
     {
-      question: "O que significa 'Early Adopters grátis'?",
+      question: "O que significa piloto assistido?",
       answer:
-        "É acesso gratuito para os primeiros condomínios participantes do pré-lançamento. Sem pegadinha: não pedimos cartão e não existe cobrança automática.",
+        "É uma entrada acompanhada para os primeiros condomínios selecionados. O objetivo é validar operação real, onboarding e uso recorrente do core do produto.",
     },
     {
       question: "Preciso cadastrar cartão de crédito?",
@@ -24,14 +24,14 @@ const FAQ = () => {
         "Não. Para entrar como Early Adopter no Vizyn, não solicitamos cartão de crédito.",
     },
     {
-      question: "Por quanto tempo o acesso fica gratuito?",
+      question: "Por quanto tempo o piloto fica gratuito?",
       answer:
-        "O acesso gratuito vale durante a fase de pré-lançamento para os primeiros adotantes. Quando o Vizyn lançar oficialmente, você será avisado com antecedência — e nada muda automaticamente sem sua decisão.",
+        "O piloto gratuito vale durante a fase de validação combinada com cada condomínio. Nada muda automaticamente sem alinhamento prévio.",
     },
     {
       question: "O que eu ganho sendo um dos primeiros?",
       answer:
-        "Acesso antecipado, onboarding assistido e um canal direto para sugerir melhorias. Você ajuda a moldar o produto e recebe prioridade nas evoluções.",
+        "Onboarding assistido, contato próximo com a equipe e prioridade nas melhorias do core operacional. O piloto ajuda a moldar o produto para uso real.",
     },
     {
       question: "O Vizyn serve para síndico, administradora e moradores?",
@@ -41,17 +41,17 @@ const FAQ = () => {
     {
       question: "Quais recursos estão incluídos no pré-lançamento?",
       answer:
-        "O foco está no essencial de operação e financeiro: estrutura do condomínio (blocos, andares e unidades), gestão de moradores, comunicação centralizada, cobranças e acompanhamento de pagamentos.",
+        "O foco está no essencial da operação diária: comunicados, ocorrências, visitantes, entregas, reservas e a base estrutural necessária para esses fluxos funcionarem bem.",
     },
     {
-      question: "Já é possível usar o financeiro no dia a dia?",
+      question: "O Vizyn é mais forte em qual problema hoje?",
       answer:
-        "Sim. O Vizyn já permite criar e acompanhar cobranças por unidade, visualizar status (pendente, pago, vencido) e operar rotinas financeiras básicas da gestão.",
+        "Hoje o Vizyn está sendo posicionado para resolver o dia a dia operacional do condomínio: comunicação oficial, rastreabilidade de demandas, previsibilidade na portaria e organização de rotinas recorrentes.",
     },
     {
-      question: "Dá para integrar provedor de pagamento?",
+      question: "Financeiro faz parte da proposta principal agora?",
       answer:
-        "Sim. A arquitetura já foi preparada para plugar provedores como Asaas, preservando a camada de cobrança do produto para evitar dependência direta de um único PSP.",
+        "Não como argumento principal de venda nesta fase. O foco comercial atual está na operação condominial. Financeiro pode evoluir como complemento, sem liderar o discurso.",
     },
     {
       question: "Como funciona privacidade e acesso às informações?",
@@ -61,7 +61,7 @@ const FAQ = () => {
     {
       question: "Como faço para participar?",
       answer:
-        "Clique em 'Quero entrar grátis' na seção de planos e deixe um contato. Vamos falar com você para entender seu condomínio e iniciar o onboarding.",
+        "Clique em 'Quero validar no piloto' na seção de planos e deixe um contato. A equipe vai entender sua operação e avaliar encaixe para onboarding.",
     },
   ];
 
@@ -80,8 +80,8 @@ const FAQ = () => {
           <CustomTitle>Dúvidas frequentes</CustomTitle>
 
           <CustomSubtitle>
-            As perguntas mais comuns sobre o Vizyn, o pré-lançamento e o acesso
-            gratuito para os primeiros adotantes.
+            As perguntas mais comuns sobre o posicionamento atual do Vizyn, os
+            pilotos assistidos e o foco operacional do produto.
           </CustomSubtitle>
         </motion.div>
 

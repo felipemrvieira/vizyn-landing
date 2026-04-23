@@ -6,6 +6,10 @@ export const runtime = "nodejs";
 type LeadPayload = {
   name?: string;
   email?: string;
+  role?: string;
+  unitsBand?: string;
+  hasPortaria?: string;
+  primaryPain?: string;
   subject?: string;
   message?: string;
   source?: string;
@@ -54,7 +58,7 @@ function parseServiceAccountJson(raw: string) {
 export async function POST(req: Request) {
   try {
     const spreadsheetId = mustEnv("GOOGLE_SHEETS_SPREADSHEET_ID");
-    const range = process.env.GOOGLE_SHEETS_RANGE ?? "Leads!A:F";
+    const range = process.env.GOOGLE_SHEETS_RANGE ?? "Leads!A:J";
     const serviceAccountJson = mustEnv("GOOGLE_SERVICE_ACCOUNT_JSON");
 
     let body: LeadPayload;
@@ -75,11 +79,24 @@ export async function POST(req: Request) {
 
     const name = (body.name ?? "").trim();
     const email = (body.email ?? "").trim();
+    const role = (body.role ?? "").trim();
+    const unitsBand = (body.unitsBand ?? "").trim();
+    const hasPortaria = (body.hasPortaria ?? "").trim();
+    const primaryPain = (body.primaryPain ?? "").trim();
     const subject = (body.subject ?? "").trim();
     const message = (body.message ?? "").trim();
     const source = (body.source ?? "vizyn-landing").trim();
 
-    if (!name || !email || !subject || !message) {
+    if (
+      !name ||
+      !email ||
+      !role ||
+      !unitsBand ||
+      !hasPortaria ||
+      !primaryPain ||
+      !subject ||
+      !message
+    ) {
       return NextResponse.json(
         { ok: false, error: "missing_required_fields" },
         { status: 400 }
@@ -101,7 +118,18 @@ export async function POST(req: Request) {
       range,
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[createdAt, name, email, subject, message, source]],
+        values: [[
+          createdAt,
+          name,
+          email,
+          role,
+          unitsBand,
+          hasPortaria,
+          primaryPain,
+          subject,
+          message,
+          source,
+        ]],
       },
     });
 

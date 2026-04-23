@@ -27,6 +27,10 @@ import Link from "next/link";
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
+  role: z.string().min(1, "Selecione seu papel"),
+  unitsBand: z.string().min(1, "Selecione o porte do condomínio"),
+  hasPortaria: z.string().min(1, "Selecione a situação da portaria"),
+  primaryPain: z.string().min(1, "Selecione a principal dor operacional"),
   subject: z.string().min(5, "Subject must be at least 5 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 
@@ -44,6 +48,10 @@ const Contact = () => {
     defaultValues: {
       name: "",
       email: "",
+      role: "",
+      unitsBand: "",
+      hasPortaria: "",
+      primaryPain: "",
       subject: "",
       message: "",
       company: "", // honeypot
@@ -60,6 +68,10 @@ const Contact = () => {
         body: JSON.stringify({
           name: values.name,
           email: values.email,
+          role: values.role,
+          unitsBand: values.unitsBand,
+          hasPortaria: values.hasPortaria,
+          primaryPain: values.primaryPain,
           subject: values.subject,
           message: values.message,
           source: "vizyn-landing",
@@ -109,9 +121,8 @@ const Contact = () => {
           <CustomBadge>Contato</CustomBadge>
           <CustomTitle>Fale com o Vizyn</CustomTitle>
           <CustomSubtitle>
-            Quer entrar grátis como <strong>early adopter</strong> (sem
-            pegadinha), agendar uma demo, ou tirar dúvidas sobre a gestão do seu
-            condomínio e do financeiro? Manda uma mensagem.
+            Quer validar o Vizyn no seu condomínio, agendar uma demo ou discutir
+            sua operação atual? Manda uma mensagem.
           </CustomSubtitle>
         </motion.div>
 
@@ -129,11 +140,10 @@ const Contact = () => {
                 Vamos começar uma conversa
               </h3>
               <p className="text-muted-foreground mb-8">
-                O Vizyn nasceu para resolver o básico bem feito: comunicação
-                centralizada, rotinas organizadas e cobrança com visibilidade
-                para a gestão. Conte rapidamente o seu cenário (tipo de
-                condomínio, quantidade de unidades, principal dor operacional e
-                financeira) e a gente te guia no próximo passo.
+                O Vizyn nasceu para organizar o dia a dia do condomínio com
+                menos improviso e mais registro. Conte rapidamente seu cenário:
+                quantidade de unidades, presença de portaria e principal dor em
+                comunicação, ocorrências, visitantes, entregas ou reservas.
               </p>
             </div>
 
@@ -235,6 +245,116 @@ const Contact = () => {
                       />
                     </div>
 
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="role"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Seu papel</FormLabel>
+                            <FormControl>
+                              <select
+                                {...field}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              >
+                                <option value="">Selecione</option>
+                                <option value="sindico_profissional">
+                                  Síndico profissional
+                                </option>
+                                <option value="sindico_morador">
+                                  Síndico morador
+                                </option>
+                                <option value="administradora">
+                                  Administradora
+                                </option>
+                                <option value="conselho">Conselho</option>
+                                <option value="outro">Outro</option>
+                              </select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="unitsBand"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Faixa de unidades</FormLabel>
+                            <FormControl>
+                              <select
+                                {...field}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              >
+                                <option value="">Selecione</option>
+                                <option value="ate_50">Até 50 unidades</option>
+                                <option value="51_150">51 a 150 unidades</option>
+                                <option value="151_300">
+                                  151 a 300 unidades
+                                </option>
+                                <option value="mais_300">
+                                  Mais de 300 unidades
+                                </option>
+                              </select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="hasPortaria"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Portaria</FormLabel>
+                            <FormControl>
+                              <select
+                                {...field}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              >
+                                <option value="">Selecione</option>
+                                <option value="sim_24h">Sim, 24h</option>
+                                <option value="sim_horario">
+                                  Sim, em horário comercial
+                                </option>
+                                <option value="nao">Não</option>
+                              </select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="primaryPain"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Principal dor hoje</FormLabel>
+                            <FormControl>
+                              <select
+                                {...field}
+                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              >
+                                <option value="">Selecione</option>
+                                <option value="comunicacao">Comunicação</option>
+                                <option value="ocorrencias">Ocorrências</option>
+                                <option value="visitantes">Visitantes</option>
+                                <option value="entregas">Entregas</option>
+                                <option value="reservas">Reservas</option>
+                                <option value="outra">Outra</option>
+                              </select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
                     <FormField
                       control={form.control}
                       name="subject"
@@ -243,7 +363,7 @@ const Contact = () => {
                           <FormLabel>Assunto</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Ex.: Quero organizar cobrança e comunicação do condomínio"
+                              placeholder="Ex.: Quero organizar comunicação e ocorrências do condomínio"
                               {...field}
                             />
                           </FormControl>
@@ -260,7 +380,7 @@ const Contact = () => {
                           <FormLabel>Mensagem</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Ex.: Condomínio com 80 unidades. Nossa maior dor é inadimplência e retrabalho na comunicação. Queremos testar o Vizyn."
+                              placeholder="Ex.: Condomínio com 80 unidades e portaria presencial. Nossa maior dor é comunicação dispersa e falta de rastreio nas ocorrências. Queremos validar o Vizyn."
                               className="min-h-[120px]"
                               {...field}
                             />
@@ -276,7 +396,7 @@ const Contact = () => {
                       className="w-full"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Enviando..." : "Enviar mensagem"}
+                      {isSubmitting ? "Enviando..." : "Quero conversar sobre um piloto"}
                     </Button>
                   </form>
                 </Form>

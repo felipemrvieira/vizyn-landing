@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
@@ -67,12 +67,7 @@ export default function HeroVideoDialog({
   thumbnailAlt = "Video thumbnail",
 }: HeroVideoDialogProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <div className={cn("relative", className)}>
@@ -89,7 +84,7 @@ export default function HeroVideoDialog({
           {trigger}
         </div>
       </div>
-      {mounted && createPortal(
+      {typeof document !== "undefined" && createPortal(
         <AnimatePresence>
           {isVideoOpen && (
             <motion.div
