@@ -2,6 +2,13 @@
 
 Landing page institucional da Vizyn (Next.js App Router).
 
+## Estado Atual
+
+- projeto institucional separado da aplicação operacional
+- inclui endpoint server-side `POST /api/leads`
+- validação local depende de instalar dependências no diretório da landing
+- metadados e README devem permanecer alinhados com a marca Vizyn
+
 ## Stack
 
 - Next.js
@@ -33,6 +40,12 @@ npm run build
 npm run start
 ```
 
+## Situação atual
+
+- a landing usa stack moderna de Next.js e Tailwind
+- a checagem local neste workspace depende de `npm install` no diretório da landing
+- este repositório não deve carregar naming ou metadados herdados de template quando for possível substituir
+
 ## API de Leads
 
 Endpoint server-side: `POST /api/leads`
@@ -47,3 +60,4 @@ Variáveis necessárias:
 
 - Package manager oficial: **npm**
 - Manter README e metadados alinhados com a marca Vizyn (evitar referências de template)
+- README deve refletir o estado real do projeto e seus pré-requisitos de build
